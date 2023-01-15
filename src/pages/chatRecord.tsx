@@ -1,8 +1,6 @@
-import { NextPage } from 'next';
-
 import ChatRoomList from '@/components/chat/ChatRoomList';
 
-export const ChatRecord: NextPage = () => {
+export const ChatRecord = () => {
   return (
     <ul className="text-white">
       <ChatRoomList />

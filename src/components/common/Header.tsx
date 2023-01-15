@@ -1,10 +1,6 @@
 import { useMemo } from 'react';
-
+import { useLocation, Link } from "react-router-dom";
 import clsx from 'clsx';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 
 import { MENU } from '@/config';
@@ -12,16 +8,13 @@ import { useMenuContext } from '@/hooks/useMenuContext';
 import { useSign } from '@/hooks/useSign';
 import { userState } from '@/store/user';
 
-import Avatar from './atoms/Avatar';
+import Avatar from '../atoms/Avatar';
 
 const Header = () => {
   const { isShowMenu, setShowMenu } = useMenuContext();
-  const { data: session } = useSession();
   const { signIn, signOut, handleClickMenu, toSetPage } = useSign();
-  console.log('session', session);
   const [user] = useRecoilState(userState);
-  // const isShowMenu = useRef(false);
-  const router = useRouter();
+  const location = useLocation();
   const menuList = useMemo(() => {
     if (user.isVip) {
       return MENU.filter((item) => item.id !== 'vip');
@@ -33,8 +26,8 @@ const Header = () => {
   };
   return (
     <header className="fixed top-0 z-50 flex items-center w-full h-16 px-4 text-white md:static bg-cyan-900">
-      <Link href="/">
-        <Image
+      <Link to="/">
+        <img
           className="cursor-pointer"
           width={64}
           height={64}
@@ -49,7 +42,7 @@ const Header = () => {
             onClick={() => handleClickMenu(item)}
             className={clsx(
               'mr-4 cursor-pointer pb-1 hover:text-slate-200',
-              router.pathname === item.link && 'border-b border-white'
+              location.pathname === item.link && 'border-b border-white'
             )}
             key={item.text}
           >

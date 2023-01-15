@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { NextPage } from 'next';
-
 import CardWall from '@/components/CardWall';
 import { getUserFavorite } from '@/utils/http/user';
 
-export const Favorite: NextPage = () => {
+export const Favorite = () => {
   const [list, setList] = useState<
     Task.TaskAPIResponse<Task.TaskDetail> | undefined
   >(undefined);

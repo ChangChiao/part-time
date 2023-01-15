@@ -11,3 +11,7 @@ export const genQueryStr = (obj: QueryTaskParam) => {
     return a.length === 0 ? `${b}=${value}` : `${a}&${b}=${value}`;
   }, '');
 };
+
+export const getQuery = (search: string, key:string) => {
+  return new URLSearchParams(search).get(key);
+}

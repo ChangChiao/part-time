@@ -1,19 +1,17 @@
 import { useEffect } from 'react';
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { AxiosError } from 'axios';
-import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
-
+import { getQuery } from "@/utils";
 import { userState } from '@/store/user';
 import { getUser } from '@/utils/http/user';
-// import LinePay from '../components/LinePay';
-// import Order from '../components/Order';
 
-export const CheckOrder: NextPage = () => {
-  const router = useRouter();
+
+export const CheckOrder = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [, setUser] = useRecoilState(userState);
-  const orderId = router.query.id;
+  const orderId = getQuery(location.search, 'id');
   const queryUser = async () => {
     try {
       const result = await getUser();
@@ -23,8 +21,8 @@ export const CheckOrder: NextPage = () => {
       }
     } catch (error) {
       const err = error as AxiosError;
-      if (err?.response?.status === 401 && router.asPath !== '/') {
-        router.push('/');
+      if (err?.response?.status === 401 && location.pathname !== '/') {
+        navigate('/');
       }
     }
   };
