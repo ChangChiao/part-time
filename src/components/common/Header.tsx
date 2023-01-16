@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import clsx from 'clsx';
 import { useRecoilState } from 'recoil';
-
+import "../../styles/header.css"
 import { MENU } from '@/config';
 import { useMenuContext } from '@/hooks/useMenuContext';
 import { useSign } from '@/hooks/useSign';
@@ -84,32 +84,6 @@ const Header = () => {
       >
         <span className="hamburg"></span>
       </div>
-      <style jsx>
-        {`
-          .mobile .hamburg {
-            @apply bg-white w-full h-[3px] absolute top-[30px];
-          }
-          .hamburg::before {
-            @apply -top-[12px];
-          }
-          .hamburg::after {
-            @apply -bottom-[12px];
-          }
-          .mobile.active .hamburg {
-            @apply rotate-45;
-          }
-          .mobile.active .hamburg::before {
-            @apply rotate-90 top-0;
-          }
-          .mobile.active .hamburg::after {
-            @apply rotate-90 bottom-0;
-          }
-          .hamburg::before,
-          .hamburg::after {
-            @apply bg-white content-[''] absolute w-full h-[3px] ease-in-out duration-[50];
-          }
-        `}
-      </style>
     </header>
   );
 };

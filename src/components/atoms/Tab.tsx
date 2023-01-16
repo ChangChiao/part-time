@@ -30,8 +30,8 @@ const Tab = ({ tabList, setTab, style, tab, isDark }: TabParam) => {
                 href="#"
                 className={clsx(
                   'tab-item inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-300',
-                  isDark ? 'dark' : 'light',
-                  tab === item.id && 'active'
+                  (tab === item.id && isDark) ? 'text-gray-300 border-gray-300' : 'text-gray-900 border-gray-900'
+
                 )}
               >
                 {item.name}
@@ -40,16 +40,6 @@ const Tab = ({ tabList, setTab, style, tab, isDark }: TabParam) => {
           );
         })}
       </ul>
-      <style jsx>
-        {`
-          .tab-item.dark.active {
-            @apply text-gray-300 border-gray-300;
-          }
-          .tab-item.light.active {
-            @apply text-gray-900 border-gray-900;
-          }
-        `}
-      </style>
     </div>
   );
 };

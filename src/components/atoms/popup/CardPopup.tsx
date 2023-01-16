@@ -135,13 +135,6 @@ const CardPopup = ({
             </div>
           )}
         </div>
-        <style jsx>
-          {`
-            .card-mask {
-              @apply absolute top-0 left-0 flex items-center justify-center w-full h-full text-xl tracking-wider text-white translate-x-2 bg-black/50;
-            }
-          `}
-        </style>
       </div>
     </div>
   );

@@ -62,10 +62,6 @@ const Card = ({
   };
 
   return (
-    // <div
-    //   onClick={handleClick}
-    //   className="relative p-4 mb-10 bg-blue-500 shadow-3xl w-80 rounded-xl"
-    // >
     <InView
       as="div"
       triggerOnce={true}
@@ -108,15 +104,7 @@ const Card = ({
         </div>
       </div>
       <Watermark status={status} />
-      <style jsx>
-        {`
-          .card-mask {
-            @apply absolute top-0 left-0 flex items-center justify-center w-full h-full text-xl tracking-wider text-white translate-x-2 bg-black/50;
-          }
-        `}
-      </style>
     </InView>
-    // </div>
   );
 };
 

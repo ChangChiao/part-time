@@ -39,13 +39,6 @@ const Watermark = ({ status, isPick }: WatermarkProps) => {
           {text}
         </div>
       )}
-      <style jsx>
-        {`
-          .loading-text span {
-            @apply animate-fadeOut;
-          }
-        `}
-      </style>
     </div>
   );
 };
