@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 
 const Pay = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleOrder = async () => {
-    router.push(`/checkOrder`);
+    navigate(`/checkOrder`);
   };
   return (
     <div>

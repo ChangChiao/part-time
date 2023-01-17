@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -21,7 +21,7 @@ import ChatRoomMessage from './ChatRoomMessage';
 let socket: Socket | null = null;
 
 const ChatRoom = ({ roomId, name, avatar, isOpen }: Chat.RoomState) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [room, setRoom] = useRecoilState(roomState);
   let timer: ReturnType<typeof setTimeout>;
   const msgEl = useRef<HTMLDivElement>(null);
@@ -125,7 +125,7 @@ const ChatRoom = ({ roomId, name, avatar, isOpen }: Chat.RoomState) => {
   };
 
   const toPrevPage = () => {
-    router.back();
+    navigate(-1)
     setRoom([]);
   };
 
@@ -135,7 +135,7 @@ const ChatRoom = ({ roomId, name, avatar, isOpen }: Chat.RoomState) => {
     const token = getCookie('token');
     if (!token) {
       toast.error('請先登入喔！');
-      router.push('/');
+      navigate('/');
     }
     // socket初始化
     socket = io(`${BACKEND_URL}/chat`, {
@@ -201,7 +201,7 @@ const ChatRoom = ({ roomId, name, avatar, isOpen }: Chat.RoomState) => {
     // 接收錯誤
     socket!.on('error', (error) => {
       toast.error(error);
-      router.push('/');
+      navigate('/');
     });
 
     detectTop();

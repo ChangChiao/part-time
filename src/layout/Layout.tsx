@@ -1,8 +1,7 @@
 import React, { useEffect, useCallback } from "react";
-import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { AxiosError } from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import Loading from "@/components/atoms/Loading";
@@ -53,16 +52,7 @@ const Layout = () => {
     console.log("router.asPath", location.pathname);
   }, [queryUser]);
 
-  const renderComp = () => {
-    switch (showPopupName) {
-      case "signIn":
-        return <SignInPop />;
-      case "upgrade":
-        return <VipPopup />;
-      default:
-        return null;
-    }
-  };
+
   return (
     <div className="h-screen">
       <Header />

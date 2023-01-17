@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 
@@ -9,7 +9,7 @@ import { getDeviceType } from '@/utils/device';
 import { getRoomId } from '@/utils/http/chat';
 
 export const useChat = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [pending, setPending] = useState<Boolean>(false);
   const [room, updateRoom] = useRecoilState(roomState);
   const isRoomExist = (roomId: string) => {
@@ -32,7 +32,7 @@ export const useChat = () => {
       return;
     }
     updateRoom([roomObj]);
-    router.push('/chatRoomPage');
+    navigate('/chatRoomPage');
   };
   const sendMessage = async (id: string) => {
     if (pending) return;

@@ -6,7 +6,7 @@ import { LoadingContextProvider } from "@/hooks/useLoadingContext";
 import { PopupContextProvider } from "@/hooks/usePopupContext";
 import { MenuContextProvider } from '@/hooks/useMenuContext';
 import 'react-toastify/dist/ReactToastify.css';
-import '../styles/global.css';
+import '@/styles/global.css';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
